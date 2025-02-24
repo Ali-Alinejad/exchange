@@ -12,6 +12,7 @@
     "@apollo/client": "^3.13.1",
     "@prisma/client": "^6.4.1",
     "@radix-ui/react-slot": "^1.1.2",
+    "@shadcn/ui": "^0.0.4",
     "chart.js": "^4.4.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
