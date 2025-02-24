@@ -1,9 +1,6 @@
-import { Button } from "@/components/ui/button"
 
-export default function Home() {
-  return (
-    <div>
-      <Button>Click me</Button>
-    </div>
-  )
+import HomePage from './home/page';
+
+export default function MainPage() {
+    return <HomePage />;
 }
