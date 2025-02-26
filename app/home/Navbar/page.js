@@ -55,9 +55,11 @@ export default function Navbar() {
                     </NextLink>
                 </ul>
                 <ul>
-                    <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
-                        Markets
-                    </Button>
+                    <NextLink href="/markets">
+                        <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
+                            Markets
+                        </Button>
+                    </NextLink>
                 </ul>
                 <ul>
                     <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
