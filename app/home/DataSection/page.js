@@ -10,6 +10,7 @@ import {
     User,
     Chip,
     Button,
+    Avatar,
 } from "@heroui/react";
 import React, { useState } from "react";
 import Chart from "react-apexcharts";
@@ -28,6 +29,7 @@ export const data = [
         name: "BTC",
         lastPrice: '88.934',
         Change24: '-0.05',
+        icon: 'coins/icons8-bitcoin-240.png',
         Chart: {
             last12h: {
                 ago1h: 82120,
@@ -50,6 +52,8 @@ export const data = [
     {
         id: 2,
         name: "ETH",
+        icon: 'coins/icons8-ethereum-240.png',
+
         lastPrice: '2.670',
         Change24: '+1.25',
         Chart: {
@@ -75,6 +79,8 @@ export const data = [
         id: 3,
         name: "LTC",
         lastPrice: '150',
+        icon: 'coins/icons8-litecoin-250.png',
+
         Change24: '+0.85',
         Chart: {
             last12h: {
@@ -98,6 +104,8 @@ export const data = [
     {
         id: 4,
         name: "XRP",
+        icon: 'coins/icons8-xrp-240.png',
+
         lastPrice: '0.75',
         Change24: '+0.20',
         Chart: {
@@ -122,6 +130,8 @@ export const data = [
     {
         id: 5,
         name: "ADA",
+        icon: 'coins/icons8-exchange-96.png',
+
         lastPrice: '1.10',
         Change24: '-0.15',
         Chart: {
@@ -227,7 +237,7 @@ export default function DataSection() {
         switch (columnKey) {
             case "name":
                 return (
-                    <User avatarProps={{ radius: "lg", src: item.avatar }} className="font-bold text-xl" name={cellValue} />
+                    <Avatar src={item.icon} className="font-bold text-xl bg-transparent" name={cellValue}  > {item.name}</Avatar>
                 );
             case "lastPrice":
                 return <p className="font-bold text-lg">{cellValue} $</p>;
