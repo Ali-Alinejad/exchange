@@ -1,8 +1,8 @@
 const MarketRow = () => {
     return (
-        <div className="grid grid-cols-8 gap-4 py-4 items-center text-sm text-black ">
+        <div className="mt-4 pl-5 grid grid-cols-8 gap-4 py-4 items-center text-sm text-black rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100">
             <div className="flex items-center">
-                <span className="text-gray-400 text-lg">☆</span>
+                <span className="text-gray-400 text-lg hover:bg-">☆</span>
                 <span className="ml-2 font-bold">BTCUSDT</span>
             </div>
             <div className="text-black">
@@ -14,7 +14,7 @@ const MarketRow = () => {
             <div>86,043.8</div>
             <div>2.42B</div>
             <div>$1.86T</div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 -ml-6">
                 <a href="#" className="text-blue-500 text-xs">Details</a>
                 <button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</button>
             </div>
