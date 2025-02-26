@@ -170,6 +170,7 @@ const MarketRow = () => {
             {marketData.map((data, index) => (
                 <NextLink
                     href={`/chart/${data.symbol}`}
+                    key={data.symbol}
                     className="mt-1 pl-5 grid grid-cols-8 gap-4 py-4 items-center text-sm text-black rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors delay-30"
                 >
                     <div className="flex items-center">
@@ -188,7 +189,6 @@ const MarketRow = () => {
                     <div>{data.volume}</div>
                     <div>{data.marketCap}</div>
                     <div className="flex items-center space-x-2 -ml-6">
-                        <a href="#" className="text-blue-500 text-xs">Details</a>
                         <button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</button>
                     </div>
                 </NextLink>

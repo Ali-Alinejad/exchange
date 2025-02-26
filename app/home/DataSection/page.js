@@ -230,7 +230,7 @@ export default function DataSection() {
                     <User avatarProps={{ radius: "lg", src: item.avatar }} className="font-bold text-xl" name={cellValue} />
                 );
             case "lastPrice":
-                return <p className="font-bold text-lg">{cellValue}</p>;
+                return <p className="font-bold text-lg">{cellValue} $</p>;
             case "Change24":
                 return (
                     <Chip className=" font-bold text-large" color={cellValue > 0 ? 'success' : 'danger'} variant="light">
@@ -241,7 +241,7 @@ export default function DataSection() {
                 case "volume24h":
                     return (
                         <p className=" font-bold text-large"  >
-                        {cellValue}
+                        {cellValue} B
                     </p>
                     
                     );
@@ -266,7 +266,7 @@ export default function DataSection() {
     }, []);
 
     return (
-        <Table aria-label="" style={{ fontSize: '0.9rem' }} className="w-[60%] mx-auto">
+        <Table aria-label="" style={{ fontSize: '0.9rem' }} className="w-[60%] mx-auto my-28">
             <TableHeader columns={columns}>
                 {(column) => (
                     <TableColumn key={column.uid} align={column.uid === "Action" ? "center" : "start"}>
