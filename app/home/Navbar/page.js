@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import NextLink from "next/link";
+
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -7,6 +9,7 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import Link from "next/link";
 
 const components = [
     {
@@ -45,9 +48,11 @@ export default function Navbar() {
         <div className='absolute left-[27%] max-sm:left-0'>
             <li className="flex mx-auto gap-4 p-10 max-sm:p-1 max-sm:gap-0">
                 <ul>
-                    <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
-                        Crypto
-                    </Button>
+                    <NextLink href="/crypto">
+                        <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
+                            Crypto
+                        </Button>
+                    </NextLink>
                 </ul>
                 <ul>
                     <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
@@ -70,8 +75,8 @@ export default function Navbar() {
                                         <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] overflow-hidden lg:grid-cols-[.75fr_1fr]">
                                             {components.map((component, index) => (
                                                 <li key={index} className="p-2 hover:bg-gray-100 rounded w-full">
-                                                   <p className="text-teal-600 font-bold text-sm w-52"> {component.title}</p>
-                                                   <p className="text-sm text-gray-500 ">    {component.description}</p> 
+                                                    <p className="text-teal-600 font-bold text-sm w-52"> {component.title}</p>
+                                                    <p className="text-sm text-gray-500 ">    {component.description}</p>
                                                 </li>
                                             ))}
                                         </ul>
