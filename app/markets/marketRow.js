@@ -1,25 +1,194 @@
-const MarketRow = () => {
-    return (
-        <div className="mt-4 pl-5 grid grid-cols-8 gap-4 py-4 items-center text-sm text-black rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100">
-            <div className="flex items-center">
-                <span className="text-gray-400 text-lg hover:bg-">☆</span>
-                <span className="ml-2 font-bold">BTCUSDT</span>
-            </div>
-            <div className="text-black">
-                88,849.9
-                <div className="text-gray-500 text-xs">88,733.81 USD</div>
-            </div>
-            <div className="text-red-500">-3.00%</div>
-            <div>91,600.5</div>
-            <div>86,043.8</div>
-            <div>2.42B</div>
-            <div>$1.86T</div>
-            <div className="flex items-center space-x-2 -ml-6">
-                <a href="#" className="text-blue-500 text-xs">Details</a>
-                <button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</button>
-            </div>
-        </div>
-    );
-};
-
-export default MarketRow;
+const marketData = [
+    {
+      symbol: "BTCUSDT",
+      price: "88,849.9",
+      priceInUSD: "88,733.81 USD",
+      percentageChange: "-3.00%",
+      high: "91,600.5",
+      low: "86,043.8",
+      volume: "2.42B",
+      marketCap: "$1.86T"
+    },
+    {
+      symbol: "ETHUSDT",
+      price: "1,700.5",
+      priceInUSD: "1,690.23 USD",
+      percentageChange: "+1.25%",
+      high: "1,750.0",
+      low: "1,650.0",
+      volume: "1.5B",
+      marketCap: "$200B"
+    },
+    {
+      symbol: "XRPUSDT",
+      price: "1.00",
+      priceInUSD: "0.98 USD",
+      percentageChange: "-0.50%",
+      high: "1.05",
+      low: "0.95",
+      volume: "1.8B",
+      marketCap: "$45B"
+    },
+    {
+      symbol: "LTCUSDT",
+      price: "150.25",
+      priceInUSD: "149.75 USD",
+      percentageChange: "-1.00%",
+      high: "155.00",
+      low: "145.00",
+      volume: "800M",
+      marketCap: "$10B"
+    },
+    {
+      symbol: "ADAUSDT",
+      price: "1.23",
+      priceInUSD: "1.22 USD",
+      percentageChange: "+0.60%",
+      high: "1.30",
+      low: "1.10",
+      volume: "2.1B",
+      marketCap: "$40B"
+    },
+    {
+      symbol: "BNBUSDT",
+      price: "300.00",
+      priceInUSD: "298.50 USD",
+      percentageChange: "-2.00%",
+      high: "310.00",
+      low: "290.00",
+      volume: "1B",
+      marketCap: "$50B"
+    },
+    {
+      symbol: "SOLUSDT",
+      price: "130.50",
+      priceInUSD: "128.90 USD",
+      percentageChange: "+1.50%",
+      high: "135.00",
+      low: "125.00",
+      volume: "500M",
+      marketCap: "$35B"
+    },
+    {
+      symbol: "DOTUSDT",
+      price: "20.75",
+      priceInUSD: "20.50 USD",
+      percentageChange: "+0.80%",
+      high: "22.00",
+      low: "19.50",
+      volume: "700M",
+      marketCap: "$18B"
+    },
+    {
+      symbol: "DOGEUSDT",
+      price: "0.075",
+      priceInUSD: "0.073 USD",
+      percentageChange: "-1.30%",
+      high: "0.080",
+      low: "0.070",
+      volume: "5B",
+      marketCap: "$10B"
+    },
+    {
+      symbol: "SHIBUSDT",
+      price: "0.00001",
+      priceInUSD: "0.0000098 USD",
+      percentageChange: "+2.50%",
+      high: "0.000012",
+      low: "0.000008",
+      volume: "20B",
+      marketCap: "$6B"
+    },
+    {
+      symbol: "MATICUSDT",
+      price: "1.60",
+      priceInUSD: "1.58 USD",
+      percentageChange: "+1.10%",
+      high: "1.70",
+      low: "1.50",
+      volume: "1.2B",
+      marketCap: "$15B"
+    },
+    {
+      symbol: "AVAXUSDT",
+      price: "60.25",
+      priceInUSD: "59.75 USD",
+      percentageChange: "-0.80%",
+      high: "65.00",
+      low: "55.00",
+      volume: "600M",
+      marketCap: "$18B"
+    },
+    {
+      symbol: "TRXUSDT",
+      price: "0.070",
+      priceInUSD: "0.068 USD",
+      percentageChange: "-0.60%",
+      high: "0.075",
+      low: "0.065",
+      volume: "2B",
+      marketCap: "$7B"
+    },
+    {
+      symbol: "FTMUSDT",
+      price: "2.10",
+      priceInUSD: "2.05 USD",
+      percentageChange: "+0.50%",
+      high: "2.20",
+      low: "1.90",
+      volume: "400M",
+      marketCap: "$5B"
+    },
+    {
+      symbol: "LINKUSDT",
+      price: "28.40",
+      priceInUSD: "28.00 USD",
+      percentageChange: "+0.70%",
+      high: "30.00",
+      low: "26.00",
+      volume: "450M",
+      marketCap: "$12B"
+    },
+    {
+      symbol: "ZRXUSDT",
+      price: "1.25",
+      priceInUSD: "1.23 USD",
+      percentageChange: "-0.30%",
+      high: "1.35",
+      low: "1.10",
+      volume: "250M",
+      marketCap: "$1.5B"
+    }
+  ];
+  
+  
+  const MarketRow = () => {
+      return (
+          <div>
+              {marketData.map((data, index) => (
+                  <div key={index} className="mt-1 pl-5 grid grid-cols-8 gap-4 py-4 items-center text-sm text-black rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100">
+                      <div className="flex items-center">
+                          <span className="text-gray-400 text-lg">☆</span>
+                          <span className="ml-2 font-bold">{data.symbol}</span>
+                      </div>
+                      <div className="text-black">
+                          {data.price}
+                          <div className="text-gray-500 text-xs">{data.priceInUSD}</div>
+                      </div>
+                      <div className={data.percentageChange.startsWith('-') ? "text-red-500" : "text-green-500"}>
+                          {data.percentageChange}
+                      </div>
+                      <div>{data.high}</div>
+                      <div>{data.low}</div>
+                      <div>{data.volume}</div>
+                      <div>{data.marketCap}</div>
+                      <div className="flex items-center space-x-2 -ml-6">
+                          <a href="#" className="text-blue-500 text-xs">Details</a>
+                          <button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</button>
+                      </div>
+                  </div>
+              ))}
+          </div>
+      );
+  };
+  export default MarketRow;
