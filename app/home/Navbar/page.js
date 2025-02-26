@@ -1,14 +1,6 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@heroui/button";
 import NextLink from "next/link";
 
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import Link from "next/link";
 
 const components = [
@@ -66,25 +58,7 @@ export default function Navbar() {
                 </ul>
 
                 <ul>
-                    <div className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
-                        <NavigationMenu>
-                            <NavigationMenuList>
-                                <NavigationMenuItem>
-                                    <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-                                    <NavigationMenuContent>
-                                        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] overflow-hidden lg:grid-cols-[.75fr_1fr]">
-                                            {components.map((component, index) => (
-                                                <li key={index} className="p-2 hover:bg-gray-100 rounded w-full">
-                                                    <p className="text-teal-600 font-bold text-sm w-52"> {component.title}</p>
-                                                    <p className="text-sm text-gray-500 ">    {component.description}</p>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </NavigationMenuContent>
-                                </NavigationMenuItem>
-                            </NavigationMenuList>
-                        </NavigationMenu>
-                    </div>
+                   
                 </ul>
 
                 <ul>

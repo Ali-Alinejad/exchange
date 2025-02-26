@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 
 const stats = [
     { value: "200+", label: "Countries Covered" },
@@ -10,7 +9,7 @@ const stats = [
 function Hero() {
     return (
         <div>
-            <Card className="h-[100vh]">
+            <div className="h-[100vh]">
                 <div className="grid grid-cols-4 grid-rows-2 h-[94vh]">
                     <div className="col-span-4 h-[80vh] flex justify-center items-center">
                         <h1 className="text-6xl text-teal-600 font-bold">EXChange</h1>
@@ -34,7 +33,7 @@ function Hero() {
                         ))}
                     </div>
                 </div>
-            </Card>
+            </div>
         </div>
     );
 }
