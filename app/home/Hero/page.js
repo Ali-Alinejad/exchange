@@ -10,7 +10,7 @@ function Hero() {
     return (
         <div>
             <div className="h-[100vh]">
-                <div className="grid grid-cols-4 grid-rows-2 h-[94vh]">
+                <div className="grid grid-cols-4 grid-rows-2 h-[95vh]">
                     <div className="col-span-4 h-[80vh] flex justify-center items-center">
                         <h1 className="text-6xl text-teal-600 font-bold">EXChange</h1>
                         <div className="flex flex-col">
@@ -25,7 +25,7 @@ function Hero() {
                         {stats.map((stat, index) => (
                             <div
                                 key={index}
-                                className="shadow-lg rounded-md flex flex-col items-center justify-center h-[20vh] w-[400px] hover:-translate-y-2 cursor-pointer transition-transform duration-300 hover:shadow-xl"
+                                className="shadow-lg rounded-md flex flex-col items-center justify-center h-[15vh] w-[400px] hover:-translate-y-2 cursor-pointer transition-transform duration-300 hover:shadow-xl"
                             >
                                 <p className="text-2xl font-bold my-2">{stat.value}</p>
                                 <p className="text-gray-500 text-sm">{stat.label}</p>
