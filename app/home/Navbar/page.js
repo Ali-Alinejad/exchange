@@ -8,6 +8,7 @@ export default function Navbar() {
     const [language, setLanguage] = useState("national");
     const [scrollingUp, setScrollingUp] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,13 +26,17 @@ export default function Navbar() {
         };
     }, [lastScrollY]);
 
-    const stylesButton = 'bg-transparent shadow-none text-white hover:text-gray-300 hover:bg-transparent transition-all duration-300';
+    const toggleTheme = () => {
+        setIsDarkMode(!isDarkMode);
+    };
+
+    const stylesButton = 'bg-transparent shadow-none text-white hover:text-gray-300 hover:bg-transparent transition-all duration-700';
     
     return (
-        <header className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 z-50 transition-all duration-300 ${scrollingUp ? 'h-20' : 'h-0'}`} style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}>
-            <div className={`flex items-center transition-all duration-300 ${scrollingUp ? 'justify-center w-full' : 'justify-between'}`}>
-                <div className={`flex justify-center items-center transition-all duration-300 ${scrollingUp ? 'w-32' : 'w-16'}`}>
-                    <img src="/path/to/logo.png" alt="Logo" className="block transition-all duration-300" />
+        <header className={`fixed top-0 left-0 w-full flex items-center justify-around px-4 z-50 transition-all duration-700 ${scrollingUp ? 'h-20' : 'h-0'} ${isDarkMode ? 'bg-gray-800' : 'bg-gray-300'}`}>
+            <div className={`flex items-center transition-all duration-700  justify-center w-full`}>
+                <div className={`flex justify-center items-center transition-all duration-[1.2s] ${scrollingUp ? 'w-32' : 'w-24'}`}>
+                <img src="Logos/logo-transparent.png" alt="Logo" className="block transition-all duration-700" />
                 </div>
                 {scrollingUp && (
                     <nav className="flex gap-4">
@@ -49,7 +54,7 @@ export default function Navbar() {
                         <>
                             <Dropdown>
                                 <DropdownTrigger>
-                                    <Avatar src={`/flags/${language}.png`} alt="Language" className="cursor-pointer" />
+                                    <Avatar src={`/flags/${language}.png`} alt="Language" className="cursor-pointer transition-all duration-500" />
                                 </DropdownTrigger>
                                 <DropdownMenu>
                                     <DropdownItem onClick={() => setLanguage("national")}>English</DropdownItem>
@@ -58,13 +63,16 @@ export default function Navbar() {
                             </Dropdown>
                             <Dropdown>
                                 <DropdownTrigger>
-                                    <Avatar src="/path/to/user-avatar.png" alt="User" className="cursor-pointer" />
+                                    <Avatar src="/path/to/user-avatar.png" alt="User" className="cursor-pointer transition-all duration-700" />
                                 </DropdownTrigger>
                                 <DropdownMenu>
                                     <DropdownItem>Login</DropdownItem>
                                     <DropdownItem>Sign up</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
+                            <Button onClick={toggleTheme} className={stylesButton}>
+                                {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+                            </Button>
                         </>
                     )}
                 </div>
