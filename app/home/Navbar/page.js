@@ -1,12 +1,13 @@
 "use client";
 
 import { Button, Avatar, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/react";
+import {Chip} from "@heroui/chip";
 import NextLink from "next/link";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
     const [language, setLanguage] = useState("national");
-    const [scrollingUp, setScrollingUp] = useState(false);
+    const [scrollingUp, setScrollingUp] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -30,12 +31,12 @@ export default function Navbar() {
         setIsDarkMode(!isDarkMode);
     };
 
-    const stylesButton = 'bg-transparent shadow-none text-white hover:text-gray-300 hover:bg-transparent transition-all duration-700';
+    const stylesButton = `  ${isDarkMode ? 'text-teal-400' : 'text-teal-600'} bg-transparent shadow-none hover:text-teal-600  hover:-translate-y-1 transition-all duration-700`;
     
     return (
-        <header className={`fixed top-0 left-0 w-full flex items-center justify-around px-4 z-50 transition-all duration-700 ${scrollingUp ? 'h-20' : 'h-0'} ${isDarkMode ? 'bg-gray-800' : 'bg-gray-300'}`}>
+        <header className={`fixed top-0 left-0 w-full flex items-center Dropdown shadow-lg justify-around px-4 z-50 transition-all duration-700 ${scrollingUp ? 'h-20' : 'h-0'} ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
             <div className={`flex items-center transition-all duration-700  justify-center w-full`}>
-                <div className={`flex justify-center items-center transition-all duration-[1.2s] ${scrollingUp ? 'w-32' : 'w-24'}`}>
+                <div className={`flex justify-center  transition-all duration-[1.2s] ${scrollingUp ? 'w-32' : 'w-0'}`}>
                 <img src="Logos/logo-transparent.png" alt="Logo" className="block transition-all duration-700" />
                 </div>
                 {scrollingUp && (
@@ -49,7 +50,7 @@ export default function Navbar() {
                         ))}
                     </nav>
                 )}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 ml-20">
                     {scrollingUp && (
                         <>
                             <Dropdown>
@@ -63,16 +64,16 @@ export default function Navbar() {
                             </Dropdown>
                             <Dropdown>
                                 <DropdownTrigger>
-                                    <Avatar src="/path/to/user-avatar.png" alt="User" className="cursor-pointer transition-all duration-700" />
+                                    <Avatar  alt="User" className="cursor-pointer transition-all duration-700" />
                                 </DropdownTrigger>
                                 <DropdownMenu>
                                     <DropdownItem>Login</DropdownItem>
                                     <DropdownItem>Sign up</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
-                            <Button onClick={toggleTheme} className={stylesButton}>
-                                {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-                            </Button>
+                            <Chip onClick={toggleTheme} className="cursor-pointer"variant="dot">
+                                {isDarkMode ? '☀️' : '🌙'}
+                            </Chip>
                         </>
                     )}
                 </div>
