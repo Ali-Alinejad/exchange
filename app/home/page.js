@@ -8,8 +8,8 @@ export default function HomePage()
     return (
         <>
 <Navbar  className="absolute"/>
-<Hero/>
 <NewsScroll/>
+<Hero/>
 <DataSection/>
 </>
     );
