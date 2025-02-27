@@ -265,7 +265,7 @@ export default function DataSection() {
                 case "Action":
                     return (
                         <p className=" font-bold text-large"  >
-                        <Button className="border-teal-700 text-teal-600 border-[1px] font-bold hover:scale-95" variant="faded">Show</Button>
+                        <Button className="border-violet-700 text-violet-600 border-[1px] font-bold hover:scale-95" variant="faded">Show</Button>
                     </p>
                     
                     );

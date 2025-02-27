@@ -21,10 +21,12 @@ function Hero() {
       <div className="container mx-auto px-4 py-16 mt-10">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
-            <Image src="Logos/logo-text-vertical.png" alt="Logo" 
-             width={260}
-             height={200}
+         
+            <Image src="Logos/Screenshot 2025-02-27 172701-Photoroom.png" alt="Logo" 
+             width={350}
+             height={120}
             />
+          
             <h1 className="text-5xl font-extrabold mb-6 leading-tight">
               Trade Cryptocurrency <br />
               <span className={`text-transparent bg-clip-text ${isDark ? 'bg-gradient-to-r from-teal-400 to-blue-500' : 'bg-gradient-to-r from-teal-600 to-blue-600'}`}>with Ease</span>

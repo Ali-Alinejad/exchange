@@ -11,7 +11,7 @@ export default function Navbar() {
     const [scrollingUp, setScrollingUp] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const { theme, setTheme } = useTheme();
+    const { theme, setTheme } = useTheme('dark');
 
     useEffect(() => {
         const handleScroll = () => {
