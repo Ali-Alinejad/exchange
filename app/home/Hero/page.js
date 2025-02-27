@@ -17,20 +17,19 @@ function Hero() {
   const isDark = theme === 'dark';
 
   return (
-    <div className={`${isDark ? 'bg-gradient-to-br from-gray-900 to-gray-800' : 'bg-gradient-to-br from-gray-100 to-white'} text-${isDark ? 'white' : 'gray-800'} h-[96vh]`}>
-      <div className="container mx-auto px-4 py-16">
+    <div className={`${isDark ? 'bg-gradient-to-br from-gray-900 to-gray-800' : 'bg-gradient-to-b from-teal-50 to-white'} text-${isDark ? 'white' : 'gray-800'} min-h-screen`}>
+      <div className="container mx-auto px-4 py-16 mt-10">
         <div className="flex flex-col lg:flex-row items-center justify-between">
-          {/* Content */}
           <div className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
             <Image src="Logos/logo-text-vertical.png" alt="Logo" 
              width={260}
              height={200}
             />
-            <h1 className="text-5xl font-extrabold mb-6 leading-tight text-gray-400">
+            <h1 className="text-5xl font-extrabold mb-6 leading-tight">
               Trade Cryptocurrency <br />
-              <span className={`text-transparent bg-clip-text ${isDark ? 'bg-gradient-to-r from-teal-400 to-blue-500' : 'bg-gradient-to-r from-teal-600 to-blue-700'}`}>with Ease</span>
+              <span className={`text-transparent bg-clip-text ${isDark ? 'bg-gradient-to-r from-teal-400 to-blue-500' : 'bg-gradient-to-r from-teal-600 to-blue-600'}`}>with Ease</span>
             </h1>
-            <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'} mb-8`}>
+            <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-8`}>
               Join Mojex and get <span className={`${isDark ? 'text-teal-400' : 'text-teal-600'} font-semibold`}>20% off</span> on your first transaction!
             </p>
             <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-10`}>
@@ -41,14 +40,14 @@ function Hero() {
                 Go to Market
                 <ArrowRightIcon className="ml-2 h-5 w-5" />
               </Button>
-              <Button color={isDark ? "white" : "gray"} variant="outline" size="lg">
+              <Button color={isDark ? "white" : "teal"} variant="outline" size="lg">
                 Learn More
               </Button>
             </div>
           </div>
 
-          <div className="lg:w-1/2 relative mt-52">
-            <div className={`absolute inset-0 bg-gradient-to-tr ${isDark ? 'from-teal-400 to-blue-500' : 'from-teal-600 to-blue-700'} rounded-full filter blur-3xl opacity-20`}></div>
+          <div className="lg:w-1/2 relative mt-12 lg:mt-0">
+            <div className={`absolute inset-0 bg-gradient-to-tr ${isDark ? 'from-teal-400 to-blue-500' : 'from-teal-200 to-blue-300'} rounded-full filter blur-3xl opacity-20`}></div>
             <Image
               alt="Hero Image"
               src="hero/hero.png"
@@ -60,15 +59,30 @@ function Hero() {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
           {stats.map((stat, index) => (
-            <Card key={index} className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} text-${isDark ? 'gray-400' : 'gray-800'}`}>
-              <div className="flex items-center">
-                <stat.icon className={`h-12 w-12 ${isDark ? 'text-teal-400' : 'text-teal-600'} mr-4`} />
-                <div>
-                  <p className="text-3xl font-bold">{stat.value}</p>
-                  <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>{stat.label}</p>
-                </div>
-              </div>
-            </Card>
+           <Card 
+           key={index} 
+           className={`
+             ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200 shadow-lg'} 
+             text-${isDark ? 'gray-200' : 'gray-800'} 
+             h-36 
+             flex 
+             items-center 
+             justify-center
+           `}
+         >
+           <div className="flex flex-col items-center text-center">
+           
+             <div className='flex flex-row'>
+             <stat.icon className={`h-12 w-12 ${isDark ? 'text-teal-400' : 'text-teal-600'} mb-2 pb-2 mr-2`} />
+               <p className="text-3xl font-bold">{stat.value}</p>
+               </div>
+             <div>
+
+               <p className={isDark ? 'text-gray-400' : 'text-gray-600'}>{stat.label}</p>
+               </div>
+             </div>
+         </Card>
+         
           ))}
         </div>
       </div>

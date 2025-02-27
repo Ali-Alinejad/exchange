@@ -286,7 +286,7 @@ export default function DataSection() {
             </TableHeader>
             <TableBody items={data}>
                 {(item) => (
-                    <TableRow key={item.id} className=" mx-4 odd:bg-gray-50 text-lg ">
+                    <TableRow key={item.id} className=" mx-4  text-lg ">
                         {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
                     </TableRow>
                 )}
