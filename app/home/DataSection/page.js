@@ -276,7 +276,7 @@ export default function DataSection() {
     }, []);
 
     return (
-        <Table aria-label="" style={{ fontSize: '0.9rem' }} className="w-[60%] mx-auto my-28">
+            <Table aria-label="" style={{ fontSize: '0.9rem' }} className="w-fit mx-auto my-28">
             <TableHeader columns={columns}>
                 {(column) => (
                     <TableColumn key={column.uid} align={column.uid === "Action" ? "center" : "start"}>
@@ -286,7 +286,7 @@ export default function DataSection() {
             </TableHeader>
             <TableBody items={data}>
                 {(item) => (
-                    <TableRow key={item.id} className=" odd:bg-gray-50 text-lg ">
+                    <TableRow key={item.id} className=" mx-4 odd:bg-gray-50 text-lg ">
                         {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
                     </TableRow>
                 )}
