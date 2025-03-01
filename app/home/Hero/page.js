@@ -53,7 +53,7 @@ function Hero() {
             <Image
               alt="Hero Image"
               src="hero/hero.png"
-              className="relative z-10 transform hover:scale-105 transition-transform duration-300"
+              className="relative z-10 ml-40 transform hover:scale-105 transition-transform duration-300 "
             />
           </div>
         </div>
