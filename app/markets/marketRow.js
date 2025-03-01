@@ -1,3 +1,4 @@
+"use client"
 const marketData = [
     {
         symbol: "BTCUSDT",
@@ -100,16 +101,6 @@ const marketData = [
         marketCap: "$6B"
     },
     {
-        symbol: "MATICUSDT",
-        price: "1.60",
-        priceInUSD: "1.58 USD",
-        percentageChange: "+1.10%",
-        high: "1.70",
-        low: "1.50",
-        volume: "1.2B",
-        marketCap: "$15B"
-    },
-    {
         symbol: "AVAXUSDT",
         price: "60.25",
         priceInUSD: "59.75 USD",
@@ -128,16 +119,6 @@ const marketData = [
         low: "0.065",
         volume: "2B",
         marketCap: "$7B"
-    },
-    {
-        symbol: "FTMUSDT",
-        price: "2.10",
-        priceInUSD: "2.05 USD",
-        percentageChange: "+0.50%",
-        high: "2.20",
-        low: "1.90",
-        volume: "400M",
-        marketCap: "$5B"
     },
     {
         symbol: "LINKUSDT",
@@ -162,6 +143,7 @@ const marketData = [
 ];
 
 
+import { Chip, Button } from '@heroui/react';
 import NextLink from 'next/link';
 
 const MarketRow = () => {
@@ -189,7 +171,7 @@ const MarketRow = () => {
                     <div>{data.marketCap}</div>
                     <div className="flex items-center space-x-2 -ml-6">
                         <a href="#" className="text-blue-500 text-xs">Details</a>
-                        <button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</button>
+                        <Button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</Button>
                     </div>
                 </NextLink>
             ))}
