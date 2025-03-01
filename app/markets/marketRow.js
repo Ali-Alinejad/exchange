@@ -1,3 +1,4 @@
+"use client"
 const marketData = [
     {
         symbol: "BTCUSDT",
@@ -100,16 +101,6 @@ const marketData = [
         marketCap: "$6B"
     },
     {
-        symbol: "MATICUSDT",
-        price: "1.60",
-        priceInUSD: "1.58 USD",
-        percentageChange: "+1.10%",
-        high: "1.70",
-        low: "1.50",
-        volume: "1.2B",
-        marketCap: "$15B"
-    },
-    {
         symbol: "AVAXUSDT",
         price: "60.25",
         priceInUSD: "59.75 USD",
@@ -128,16 +119,6 @@ const marketData = [
         low: "0.065",
         volume: "2B",
         marketCap: "$7B"
-    },
-    {
-        symbol: "FTMUSDT",
-        price: "2.10",
-        priceInUSD: "2.05 USD",
-        percentageChange: "+0.50%",
-        high: "2.20",
-        low: "1.90",
-        volume: "400M",
-        marketCap: "$5B"
     },
     {
         symbol: "LINKUSDT",
@@ -161,25 +142,25 @@ const marketData = [
     }
 ];
 
-
+import { useTheme } from 'next-themes';
+import { Button } from '@heroui/react';
 import NextLink from 'next/link';
-
 const MarketRow = () => {
+    const { theme } = useTheme();
     return (
         <div>
             {marketData.map((data, index) => (
-                <NextLink
-                    href={`/chart/${data.symbol}`}
+                <div
                     key={data.symbol}
-                    className="mt-1 pl-5 grid grid-cols-8 gap-4 py-4 items-center text-sm text-black rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors delay-30"
+                    className={`${theme === 'dark' ? 'bg-slate-950 hover:bg-slate-900' : 'bg-gray-100 hover:bg-gray-200'} mt-1 pl-5 grid grid-cols-8 gap-4 py-4 items-center text-sm rounded-xl shadow-sm cursor-pointer hover:bg-transparent transition-colors delay-30`}
                 >
                     <div className="flex items-center">
-                        <span className="text-gray-400 text-lg">☆</span>
+                        <span className=" text-lg">☆</span>
                         <span className="ml-2 font-bold">{data.symbol}</span>
                     </div>
-                    <div className="text-black">
+                    <div className="">
                         {data.price}
-                        <div className="text-gray-500 text-xs">{data.priceInUSD}</div>
+                        <div className=" text-xs">{data.priceInUSD}</div>
                     </div>
                     <div className={data.percentageChange.startsWith('-') ? 'text-red-500' : 'text-green-500'}>
                         {data.percentageChange}
@@ -189,9 +170,13 @@ const MarketRow = () => {
                     <div>{data.volume}</div>
                     <div>{data.marketCap}</div>
                     <div className="flex items-center space-x-2 -ml-6">
-                        <button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</button>
+                        <a href="#" className=" text-xs">Details</a>
+                        <NextLink href={`/chart/${data.symbol}`}
+                        >
+                            <Button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</Button>
+                        </NextLink>
                     </div>
-                </NextLink>
+                </div>
             ))}
         </div>
     );
