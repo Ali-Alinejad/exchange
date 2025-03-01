@@ -150,14 +150,19 @@ import { useRouter } from 'next/navigation';
 const MarketRow = () => {
     const { theme } = useTheme();
     const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const [isClient, setIsClient] = useState(false);
     const [isMediumScreen, setIsMediumScreen] = useState(false);
     const [isExtraLargeScreen, setIsExtraLargeScreen] = useState(false);
     const router = useRouter();
+    const isDark = theme === 'dark';
     const handleNavigation = (symbol) => {
 
         router.push(`/chart/${symbol}`);
     };
+
     useEffect(() => {
+        setIsClient(true);
+        if (typeof window === "undefined") return;
         const handleResize = () => {
             setIsSmallScreen(window.innerWidth < 640);
             setIsMediumScreen(window.innerWidth < 768);
@@ -172,12 +177,16 @@ const MarketRow = () => {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+    if (!isClient) return null;
     return (
         <div>
             {marketData.map((data, index) => (
                 <div
                     key={data.symbol}
-                    className={`${theme === 'dark' ? 'bg-slate-950 hover:bg-slate-900' : 'bg-gray-100 hover:bg-gray-200'} mt-1 pl-5 grid grid-cols-8 gap-4 max-sm:grid-cols-2 max-md:grid-cols-4 max-xl:grid-cols-7 mx-20 max-lg:mx-0 py-4 items-center text-sm rounded-xl shadow-sm cursor-pointer hover:bg-transparent transition-colors delay-30`}
+                    className={`${isDark ? 'bg-slate-950 hover:bg-slate-900' : 'bg-gray-100 hover:bg-gray-200'} 
+                    mt-1 pl-5 grid grid-cols-8 gap-4 max-sm:grid-cols-2 max-md:grid-cols-4 max-xl:grid-cols-7 
+                    mx-20 max-lg:mx-0 py-4 items-center text-sm rounded-xl shadow-sm cursor-pointer transition-colors delay-30`}
+
                     onClick={() => handleNavigation(data.symbol)}
                 >
                     <div className="flex items-center ">
