@@ -141,41 +141,73 @@ const marketData = [
         marketCap: "$1.5B"
     }
 ];
-
+import { useEffect, useState } from "react";
 import { useTheme } from 'next-themes';
 import { Button } from '@heroui/react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
+
 const MarketRow = () => {
     const { theme } = useTheme();
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const [isMediumScreen, setIsMediumScreen] = useState(false);
+    const [isExtraLargeScreen, setIsExtraLargeScreen] = useState(false);
+    const router = useRouter();
+    const handleNavigation = (symbol) => {
+
+        router.push(`/chart/${symbol}`);
+    };
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 640);
+            setIsMediumScreen(window.innerWidth < 768);
+            setIsExtraLargeScreen(window.innerWidth < 1280);
+        };
+
+        handleResize();
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
     return (
         <div>
             {marketData.map((data, index) => (
                 <div
                     key={data.symbol}
-                    className={`${theme === 'dark' ? 'bg-slate-950 hover:bg-slate-900' : 'bg-gray-100 hover:bg-gray-200'} mt-1 pl-5 grid grid-cols-8 gap-4 py-4 items-center text-sm rounded-xl shadow-sm cursor-pointer hover:bg-transparent transition-colors delay-30`}
+                    className={`${theme === 'dark' ? 'bg-slate-950 hover:bg-slate-900' : 'bg-gray-100 hover:bg-gray-200'} mt-1 pl-5 grid grid-cols-8 gap-4 max-sm:grid-cols-2 max-md:grid-cols-4 max-xl:grid-cols-7 mx-20 max-lg:mx-0 py-4 items-center text-sm rounded-xl shadow-sm cursor-pointer hover:bg-transparent transition-colors delay-30`}
+                    onClick={() => handleNavigation(data.symbol)}
                 >
-                    <div className="flex items-center">
+                    <div className="flex items-center ">
                         <span className=" text-lg">☆</span>
                         <span className="ml-2 font-bold">{data.symbol}</span>
                     </div>
-                    <div className="">
+                    <div >
                         {data.price}
-                        <div className=" text-xs">{data.priceInUSD}</div>
+                        <div className="text-xs">{data.priceInUSD}</div>
                     </div>
-                    <div className={data.percentageChange.startsWith('-') ? 'text-red-500' : 'text-green-500'}>
-                        {data.percentageChange}
-                    </div>
-                    <div>{data.high}</div>
-                    <div>{data.low}</div>
-                    <div>{data.volume}</div>
-                    <div>{data.marketCap}</div>
-                    <div className="flex items-center space-x-2 -ml-6">
-                        <a href="#" className=" text-xs">Details</a>
-                        <NextLink href={`/chart/${data.symbol}`}
-                        >
-                            <Button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</Button>
-                        </NextLink>
-                    </div>
+                    {!isMediumScreen && (
+                        <>
+                            <div className={`  ${data.percentageChange.startsWith('-') ? 'text-red-500' : 'text-green-500'}`}>
+                                {data.percentageChange}
+                            </div>
+                            <div >{data.high}</div>
+                            <div >{data.low}</div>
+                            {(!isExtraLargeScreen && <div >{data.volume}</div>)}
+                        </>
+                    )}
+                    {(!isSmallScreen && <><div >{data.marketCap}</div>
+                        <div className="  flex items-center space-x-2 -ml-6">
+                            <a href="#" className="text-xs">Details</a>
+                            <NextLink href={`/chart/${data.symbol}`}>
+                                <Button className="bg-transparent border-slate-700 font-bold text-slate-600 border-[1px] rounded-md text-xs min-w-[10px] px-2">
+                                    Trade
+                                </Button>
+                            </NextLink>
+                        </div>
+                    </>)}
                 </div>
             ))}
         </div>
