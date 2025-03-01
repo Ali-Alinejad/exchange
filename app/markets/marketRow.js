@@ -142,26 +142,25 @@ const marketData = [
     }
 ];
 
-
-import { Chip, Button } from '@heroui/react';
+import { useTheme } from 'next-themes';
+import { Button } from '@heroui/react';
 import NextLink from 'next/link';
-
 const MarketRow = () => {
+    const { theme } = useTheme();
     return (
         <div>
             {marketData.map((data, index) => (
-                <NextLink
-                    href={`/chart/${data.symbol}`}
+                <div
                     key={data.symbol}
-                    className="mt-1 pl-5 grid grid-cols-8 gap-4 py-4 items-center text-sm text-black rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors delay-30"
+                    className={`${theme === 'dark' ? 'bg-slate-950 hover:bg-slate-900' : 'bg-gray-100 hover:bg-gray-200'} mt-1 pl-5 grid grid-cols-8 gap-4 py-4 items-center text-sm rounded-xl shadow-sm cursor-pointer hover:bg-transparent transition-colors delay-30`}
                 >
                     <div className="flex items-center">
-                        <span className="text-gray-400 text-lg">☆</span>
+                        <span className=" text-lg">☆</span>
                         <span className="ml-2 font-bold">{data.symbol}</span>
                     </div>
-                    <div className="text-black">
+                    <div className="">
                         {data.price}
-                        <div className="text-gray-500 text-xs">{data.priceInUSD}</div>
+                        <div className=" text-xs">{data.priceInUSD}</div>
                     </div>
                     <div className={data.percentageChange.startsWith('-') ? 'text-red-500' : 'text-green-500'}>
                         {data.percentageChange}
@@ -171,10 +170,13 @@ const MarketRow = () => {
                     <div>{data.volume}</div>
                     <div>{data.marketCap}</div>
                     <div className="flex items-center space-x-2 -ml-6">
-                        <a href="#" className="text-blue-500 text-xs">Details</a>
-                        <Button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</Button>
+                        <a href="#" className=" text-xs">Details</a>
+                        <NextLink href={`/chart/${data.symbol}`}
+                        >
+                            <Button className="bg-blue-600 text-white px-3 py-1 rounded-md text-xs">Trade</Button>
+                        </NextLink>
                     </div>
-                </NextLink>
+                </div>
             ))}
         </div>
     );
