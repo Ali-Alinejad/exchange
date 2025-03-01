@@ -1,85 +1,85 @@
-import { Button } from "@heroui/button";
+"use client";
+
+import { Button, Avatar, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/react";
+import {Chip} from "@heroui/chip";
 import NextLink from "next/link";
-
-import Link from "next/link";
-
-const components = [
-    {
-        title: "Alert Dialog",
-        description:
-            "A modal dialog that interrupts the user with important content and expects a response.",
-    },
-    {
-        title: "Hover Card",
-        description:
-            "For sighted users to preview content available behind a link.",
-    },
-    {
-        title: "Progress",
-        description:
-            "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
-    {
-        title: "Scroll-area",
-        description: "Visually or semantically separates content.",
-    },
-    {
-        title: "Tabs",
-        description:
-            "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-        title: "Tooltip",
-        description:
-            "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-    },
-];
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 
 export default function Navbar() {
+    const [language, setLanguage] = useState("national");
+    const [scrollingUp, setScrollingUp] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    const { theme, setTheme } = useTheme('dark');
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY < lastScrollY) {
+                setScrollingUp(true);
+            } else {
+                setScrollingUp(false);
+            }
+            setLastScrollY(window.scrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [lastScrollY]);
+
+    const toggleTheme = () => {
+        setTheme(theme === 'dark' ? 'light' : 'dark');
+    };
+
+    const stylesButton = `${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} bg-transparent shadow-none hover:text-teal-600 hover:-translate-y-1 transition-all duration-700`;
+    
     return (
-        <div className='absolute left-[27%] max-sm:left-0'>
-            <li className="flex mx-auto gap-4 p-10 max-sm:p-1 max-sm:gap-0">
-                <ul>
-                    <NextLink href="/crypto">
-                        <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
-                            Crypto
-                        </Button>
-                    </NextLink>
-                </ul>
-                <ul>
-                    <NextLink href="/markets">
-                        <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
-                            Markets
-                        </Button>
-                    </NextLink>
-                </ul>
-                <ul>
-                    <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
-                        Copy Trading
-                    </Button>
-                </ul>
-
-                <ul>
-                   
-                </ul>
-
-                <ul>
-                    <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-1 transition-all duration-300">
-                        Rewards
-                    </Button>
-                </ul>
-
-                <ul>
-                    <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-2 transition-all duration-300">
-                        Wallet
-                    </Button>
-                </ul>
-                <ul>
-                    <Button className="bg-transparent shadow-none text-teal-900 hover:text-teal-500 hover:bg-transparent hover:-translate-y-2 transition-all duration-300">
-                        More
-                    </Button>
-                </ul>
-            </li>
-        </div>
+        <header className={`fixed top-0 left-0 w-full flex items-center Dropdown shadow-lg justify-around px-4 z-50 transition-all duration-700 ${scrollingUp ? 'h-20' : 'h-0'} ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+            <div className={`flex items-center transition-all duration-700  justify-center w-full`}>
+                <div className={`flex justify-center  transition-all duration-[1.2s] ${scrollingUp ? 'w-32' : 'w-0'}`}>
+                <img src="Logos/logo-transparent.png" alt="Logo" className="block transition-all duration-700" />
+                </div>
+                {scrollingUp && (
+                    <nav className="flex gap-4">
+                        {['Crypto', 'Markets', 'Copy Trading', 'Rewards', 'Wallet', 'More'].map((item) => (
+                            <NextLink href={`/${item.toLowerCase().replace(' ', '-')}`} key={item}>
+                                <Button className={stylesButton}>
+                                    {item}
+                                </Button>
+                            </NextLink>
+                        ))}
+                    </nav>
+                )}
+                <div className="flex items-center gap-4 ml-20">
+                    {scrollingUp && (
+                        <>
+                            <Dropdown>
+                                <DropdownTrigger>
+                                    <Avatar src={`/flags/${language}.png`} alt="Language" className="cursor-pointer transition-all duration-500" />
+                                </DropdownTrigger>
+                                <DropdownMenu>
+                                    <DropdownItem onClick={() => setLanguage("national")}>English</DropdownItem>
+                                    <DropdownItem onClick={() => setLanguage("persian")}>فارسی</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+                            <Dropdown>
+                                <DropdownTrigger>
+                                    <Avatar  alt="User" className="cursor-pointer transition-all duration-700" />
+                                </DropdownTrigger>
+                                <DropdownMenu>
+                                    <DropdownItem>Login</DropdownItem>
+                                    <DropdownItem>Sign up</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+                            <Chip onClick={toggleTheme} className="cursor-pointer" variant="dot">
+                                {theme === 'dark' ? '☀️' : '🌙'}
+                            </Chip>
+                        </>
+                    )}
+                </div>
+            </div>
+        </header>
     );
 }

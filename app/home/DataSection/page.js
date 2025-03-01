@@ -10,6 +10,7 @@ import {
     User,
     Chip,
     Button,
+    Avatar,
 } from "@heroui/react";
 import React, { useState } from "react";
 import Chart from "react-apexcharts";
@@ -28,6 +29,7 @@ export const data = [
         name: "BTC",
         lastPrice: '88.934',
         Change24: '-0.05',
+        icon: 'coins/icons8-bitcoin-240.png',
         Chart: {
             last12h: {
                 ago1h: 82120,
@@ -50,6 +52,8 @@ export const data = [
     {
         id: 2,
         name: "ETH",
+        icon: 'coins/icons8-ethereum-240.png',
+
         lastPrice: '2.670',
         Change24: '+1.25',
         Chart: {
@@ -75,6 +79,8 @@ export const data = [
         id: 3,
         name: "LTC",
         lastPrice: '150',
+        icon: 'coins/icons8-litecoin-250.png',
+
         Change24: '+0.85',
         Chart: {
             last12h: {
@@ -98,6 +104,8 @@ export const data = [
     {
         id: 4,
         name: "XRP",
+        icon: 'coins/icons8-xrp-240.png',
+
         lastPrice: '0.75',
         Change24: '+0.20',
         Chart: {
@@ -122,6 +130,8 @@ export const data = [
     {
         id: 5,
         name: "ADA",
+        icon: 'coins/icons8-exchange-96.png',
+
         lastPrice: '1.10',
         Change24: '-0.15',
         Chart: {
@@ -227,10 +237,10 @@ export default function DataSection() {
         switch (columnKey) {
             case "name":
                 return (
-                    <User avatarProps={{ radius: "lg", src: item.avatar }} className="font-bold text-xl" name={cellValue} />
+                    <Avatar src={item.icon} className="font-bold text-xl bg-transparent" name={cellValue}  > {item.name}</Avatar>
                 );
             case "lastPrice":
-                return <p className="font-bold text-lg">{cellValue}</p>;
+                return <p className="font-bold text-lg">{cellValue} $</p>;
             case "Change24":
                 return (
                     <Chip className=" font-bold text-large" color={cellValue > 0 ? 'success' : 'danger'} variant="light">
@@ -241,7 +251,7 @@ export default function DataSection() {
                 case "volume24h":
                     return (
                         <p className=" font-bold text-large"  >
-                        {cellValue}
+                        {cellValue} B
                     </p>
                     
                     );
@@ -255,7 +265,7 @@ export default function DataSection() {
                 case "Action":
                     return (
                         <p className=" font-bold text-large"  >
-                        <Button className="bg-teal-600 text-white font-bold">Show</Button>
+                        <Button className="border-violet-700 text-violet-600 border-[1px] font-bold hover:scale-95" variant="faded">Show</Button>
                     </p>
                     
                     );
@@ -266,7 +276,7 @@ export default function DataSection() {
     }, []);
 
     return (
-        <Table aria-label="" style={{ fontSize: '0.9rem' }} className="w-[60%] mx-auto">
+            <Table aria-label="" style={{ fontSize: '0.9rem' }} className="w-fit mx-auto my-28">
             <TableHeader columns={columns}>
                 {(column) => (
                     <TableColumn key={column.uid} align={column.uid === "Action" ? "center" : "start"}>
@@ -276,7 +286,7 @@ export default function DataSection() {
             </TableHeader>
             <TableBody items={data}>
                 {(item) => (
-                    <TableRow key={item.id} className=" odd:bg-gray-50 text-lg ">
+                    <TableRow key={item.id} className=" mx-4  text-lg ">
                         {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
                     </TableRow>
                 )}

@@ -152,6 +152,7 @@ const MarketRow = () => {
             {marketData.map((data, index) => (
                 <NextLink
                     href={`/chart/${data.symbol}`}
+                    key={data.symbol}
                     className="mt-1 pl-5 grid grid-cols-8 gap-4 py-4 items-center text-sm text-black rounded-xl bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors delay-30"
                 >
                     <div className="flex items-center">
