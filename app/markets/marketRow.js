@@ -1,5 +1,5 @@
 "use client"
-const marketData = [
+const initialMarketData = [
     {
         symbol: "BTCUSDT",
         price: "88,849.9",
@@ -8,7 +8,8 @@ const marketData = [
         high: "91,600.5",
         low: "86,043.8",
         volume: "2.42B",
-        marketCap: "$1.86T"
+        marketCap: "$1.86T",
+        favorite: false
     },
     {
         symbol: "ETHUSDT",
@@ -18,7 +19,8 @@ const marketData = [
         high: "1,750.0",
         low: "1,650.0",
         volume: "1.5B",
-        marketCap: "$200B"
+        marketCap: "$200B",
+        favorite: false
     },
     {
         symbol: "XRPUSDT",
@@ -28,7 +30,8 @@ const marketData = [
         high: "1.05",
         low: "0.95",
         volume: "1.8B",
-        marketCap: "$45B"
+        marketCap: "$45B",
+        favorite: false
     },
     {
         symbol: "LTCUSDT",
@@ -38,7 +41,8 @@ const marketData = [
         high: "155.00",
         low: "145.00",
         volume: "800M",
-        marketCap: "$10B"
+        marketCap: "$10B",
+        favorite: false
     },
     {
         symbol: "ADAUSDT",
@@ -48,7 +52,8 @@ const marketData = [
         high: "1.30",
         low: "1.10",
         volume: "2.1B",
-        marketCap: "$40B"
+        marketCap: "$40B",
+        favorite: false
     },
     {
         symbol: "BNBUSDT",
@@ -58,7 +63,8 @@ const marketData = [
         high: "310.00",
         low: "290.00",
         volume: "1B",
-        marketCap: "$50B"
+        marketCap: "$50B",
+        favorite: false
     },
     {
         symbol: "SOLUSDT",
@@ -68,7 +74,8 @@ const marketData = [
         high: "135.00",
         low: "125.00",
         volume: "500M",
-        marketCap: "$35B"
+        marketCap: "$35B",
+        favorite: false
     },
     {
         symbol: "DOTUSDT",
@@ -78,7 +85,8 @@ const marketData = [
         high: "22.00",
         low: "19.50",
         volume: "700M",
-        marketCap: "$18B"
+        marketCap: "$18B",
+        favorite: false
     },
     {
         symbol: "DOGEUSDT",
@@ -88,7 +96,8 @@ const marketData = [
         high: "0.080",
         low: "0.070",
         volume: "5B",
-        marketCap: "$10B"
+        marketCap: "$10B",
+        favorite: false
     },
     {
         symbol: "SHIBUSDT",
@@ -98,7 +107,8 @@ const marketData = [
         high: "0.000012",
         low: "0.000008",
         volume: "20B",
-        marketCap: "$6B"
+        marketCap: "$6B",
+        favorite: false
     },
     {
         symbol: "AVAXUSDT",
@@ -108,7 +118,8 @@ const marketData = [
         high: "65.00",
         low: "55.00",
         volume: "600M",
-        marketCap: "$18B"
+        marketCap: "$18B",
+        favorite: false
     },
     {
         symbol: "TRXUSDT",
@@ -118,7 +129,8 @@ const marketData = [
         high: "0.075",
         low: "0.065",
         volume: "2B",
-        marketCap: "$7B"
+        marketCap: "$7B",
+        favorite: false
     },
     {
         symbol: "LINKUSDT",
@@ -128,7 +140,8 @@ const marketData = [
         high: "30.00",
         low: "26.00",
         volume: "450M",
-        marketCap: "$12B"
+        marketCap: "$12B",
+        favorite: false
     },
     {
         symbol: "ZRXUSDT",
@@ -138,18 +151,23 @@ const marketData = [
         high: "1.35",
         low: "1.10",
         volume: "250M",
-        marketCap: "$1.5B"
+        marketCap: "$1.5B",
+        favorite: true
     }
 ];
+
 import { useEffect, useState } from "react";
 import { useTheme } from 'next-themes';
 import { Button } from '@heroui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
+import { TiStar } from "react-icons/ti";
+import { LuStar } from "react-icons/lu";
 
 const MarketRow = () => {
     const { theme } = useTheme();
     const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const [marketData, setMarketData] = useState(initialMarketData);
     const [isClient, setIsClient] = useState(false);
     const [isMediumScreen, setIsMediumScreen] = useState(false);
     const [isExtraLargeScreen, setIsExtraLargeScreen] = useState(false);
@@ -158,6 +176,12 @@ const MarketRow = () => {
     const handleNavigation = (symbol) => {
 
         router.push(`/chart/${symbol}`);
+    };
+    const toggleFavorite = (symbol) => {
+        const updatedMarketData = marketData.map(item => 
+            item.symbol === symbol ? { ...item, favorite: !item.favorite } : item
+        );
+        setMarketData(updatedMarketData);
     };
 
     useEffect(() => {
@@ -189,7 +213,17 @@ const MarketRow = () => {
                     onClick={() => handleNavigation(data.symbol)}
                 >
                     <div className="flex items-center ">
-                        <span className=" text-lg">☆</span>
+                        {data.favorite ? (
+                            <TiStar className="text-lg text-yellow-500 hover:text-yellow-700" onClick={(e) => {
+                                e.stopPropagation(); 
+                                toggleFavorite(data.symbol);
+                            }} />
+                        ) : (
+                            <LuStar className="text-lg hover:text-yellow-600" onClick={(e) => {
+                                e.stopPropagation(); 
+                                toggleFavorite(data.symbol);
+                            }} />
+                        )}
                         <span className="ml-2 font-bold">{data.symbol}</span>
                     </div>
                     <div >
