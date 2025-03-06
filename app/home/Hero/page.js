@@ -17,12 +17,13 @@ function Hero() {
   const isDark = theme === 'dark';
 
   return (
-    <div className={`${isDark ? 'bg-gradient-to-br from-gray-900 to-gray-800' : 'bg-gradient-to-b from-teal-50 to-white'} text-${isDark ? 'white' : 'gray-800'} min-h-screen`}>
-      <div className="container mx-auto px-4 py-16 mt-10">
+    <div className={`${isDark ? 'bg-gradient-to-br from-gray-900 to-gray-800' : 'bg-gradient-to-r from-gray-200 to-gray-100'} text-${isDark ? 'white' : 'gray-800'} h-[90vh]`}>
+      <div className="container mx-auto px-4 py-16 mt-20">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
          
-            <Image src="Logos/Screenshot 2025-02-27 172701-Photoroom.png" alt="Logo" 
+            <Image src="Logos/Screenshot 2025-02-27 172701-Photoroom.png "
+            alt="Logo" 
              width={350}
              height={120}
             />
@@ -38,22 +39,23 @@ function Hero() {
               Mojex is your go-to platform for efficient cryptocurrency trading. Our user-friendly interface and comprehensive tools help you navigate the crypto market with confidence.
             </p>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-              <Button color="teal" size="lg" href="/market">
+              <Button color="teal" size="lg" href="/market" variant="bordered" className='border-gray-600 hover:border-gray-300'>
                 Go to Market
                 <ArrowRightIcon className="ml-2 h-5 w-5" />
               </Button>
-              <Button color={isDark ? "white" : "teal"} variant="outline" size="lg">
+              <Button color={isDark ? "white" : "teal"} variant="bordered" className='border-gray-600 hover:border-gray-300' size="lg">
                 Learn More
               </Button>
             </div>
           </div>
 
           <div className="lg:w-1/2 relative mt-12 lg:mt-0">
-            <div className={`absolute inset-0 bg-gradient-to-tr ${isDark ? 'from-teal-400 to-blue-500' : 'from-teal-200 to-blue-300'} rounded-full filter blur-3xl opacity-20`}></div>
+            <div className={`absolute inset-0 bg-gradient-to-tr ${isDark ? 'from-teal-400 to-blue-500' : 'from-teal-400 to-blue-500'} rounded-full filter blur-3xl opacity-20`}></div>
             <Image
+            
               alt="Hero Image"
               src="hero/hero.png"
-              className="relative z-10 transform hover:scale-105 transition-transform duration-300"
+              className="relative ml-28 z-10 transform hover:scale-105 transition-transform duration-300"
             />
           </div>
         </div>
@@ -64,7 +66,7 @@ function Hero() {
            <Card 
            key={index} 
            className={`
-             ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200 shadow-lg'} 
+             ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200 shadow-lg shadow-teal-700 '} 
              text-${isDark ? 'gray-200' : 'gray-800'} 
              h-36 
              flex 
