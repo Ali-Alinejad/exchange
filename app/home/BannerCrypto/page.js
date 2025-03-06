@@ -2,7 +2,7 @@ import { Image } from "@heroui/react";
 
 function Page() {
   return (
-    <div className="relative w-full  h-[250px] overflow-hidden  max-sm:opacity-0">
+    <div className="relative w-full  h-[350px] overflow-hidden  max-sm:opacity-0">
       <Image
         src="./hero/bitcoin-digital-circuit-art.jpg"
         alt="Bitcoin Art"

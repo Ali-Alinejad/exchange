@@ -277,7 +277,7 @@ export default function DataSection() {
         <div className={`${isDark ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-teal-50 to-white'} text-${isDark ? 'white' : 'gray-800'} h-[70vh] `}>
         <Table
             aria-label="Your Table Description Here"
-            className={`  mx-auto -mt-8 max-mdu:-mt-12 z-20   w-[65%] shadow-none`}
+            className={` rounded-none  mt-10 mx-auto max-mdu:-mt-12 z-20 w-[65%]  shadow-none`}
         >
             <TableHeader columns={columns}>
                 {(column) => (
