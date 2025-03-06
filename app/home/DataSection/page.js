@@ -263,7 +263,7 @@ export default function DataSection() {
             case "Action":
                 return (
                     <p className=" font-bold text-large"  >
-                        <Button className="border-teal-700 text-gray-600 border-[2px] font-bold hover:scale-95" variant="faded">Show</Button>
+                        <Button className="border-teal-700 text-gray-400 border-[2px] font-bold hover:scale-95" variant="faded">Show</Button>
                     </p>
 
                 );
@@ -276,7 +276,7 @@ export default function DataSection() {
     return (
         <Table
             aria-label="Your Table Description Here"
-            className={` mx-auto -mt-8 max-mdu:-mt-12 z-20   w-[65%]`}
+            className={` mx-auto -mt-8 max-mdu:-mt-12 z-20   w-[65%] shadow-none`}
         >
             <TableHeader columns={columns}>
                 {(column) => (
