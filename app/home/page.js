@@ -18,7 +18,7 @@ export default function HomePage()
 <NewsScroll/>
 <Hero/>
 <BannerCrypto />
-<DataSection/>
+<DataSection className/>
 <Intro/>
 </>
     );

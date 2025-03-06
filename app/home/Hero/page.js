@@ -4,6 +4,7 @@ import { useTheme } from 'next-themes';
 import { Image, Button, Card } from "@heroui/react";
 import { ArrowRightIcon, ChartBarIcon, GlobeAltIcon, CurrencyDollarIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const stats = [
   { value: "200+", label: "Countries Covered", icon: GlobeAltIcon },
@@ -15,7 +16,7 @@ const stats = [
 
 function Hero() {
   const { theme } = useTheme();
-
+const [Hovered,isHovered]=useState(false)
   const isDark = theme === 'dark';
 
   return (
@@ -49,11 +50,17 @@ function Hero() {
           </div>
 
           <div className="lg:w-1/2 relative mt-12 lg:mt-0">
-            <div className={`absolute inset-0 bg-gradient-to-tr ${isDark ? 'from-teal-400 to-blue-500' : 'from-teal-200 to-blue-300'} rounded-full filter blur-3xl opacity-20`}></div>
+            <div className={`absolute inset-0 bg-gradient-to-tr ${isDark ? 'from-teal-400 to-blue-500' : 'from-teal-200 to-blue-300'} rounded-full filter blur-3xl opacity-20 
+            ${Hovered ? 'animate-pulse' : ''}
+            `}></div>
             <Image
               alt="Hero Image"
               src="hero/hero.png"
-              className="relative z-10 ml-40 transform hover:scale-105 transition-transform duration-300 "
+              className={`"relative z-10 ml-40 transform hover:scale-105 transition-transform duration-300 "
+                
+              `}
+              onMouseEnter={() => isHovered(true)}
+              onMouseLeave={() => isHovered(false)}
             />
           </div>
         </div>

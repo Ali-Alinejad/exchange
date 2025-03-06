@@ -29,7 +29,8 @@ function Page() {
     ];
 
     return (
-        <div className={`flex flex-col items-center space-y-8 p-8 text-${theme === 'dark' ? 'white' : 'gray-800'} ${theme === 'dark' ? 'bg-gradient-to-br from-gray-900 to-gray-800' : 'bg-gradient-to-b from-teal-50 to-white'}`}>
+        <div className={`flex flex-col items-center space-y-8 p-8 text-${theme === 'dark' ? 'white' : 'gray-800'} ${theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-800' : 'bg-gradient-to-b from-teal-50 to-white'}`}>
+             
             <Button onClick={toggleTheme} className="absolute top-4 right-4 p-2 bg-teal-500 text-white rounded">
                 Toggle Dark Mode
             </Button>

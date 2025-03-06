@@ -274,9 +274,10 @@ export default function DataSection() {
     }, [getChartData]); // Dependencies for useCallback
 
     return (
+        <div className={`${isDark ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-teal-50 to-white'} text-${isDark ? 'white' : 'gray-800'} h-[70vh] `}>
         <Table
             aria-label="Your Table Description Here"
-            className={` mx-auto -mt-8 max-mdu:-mt-12 z-20   w-[65%] shadow-none`}
+            className={`  mx-auto -mt-8 max-mdu:-mt-12 z-20   w-[65%] shadow-none`}
         >
             <TableHeader columns={columns}>
                 {(column) => (
@@ -285,13 +286,14 @@ export default function DataSection() {
                     </TableColumn>
                 )}
             </TableHeader>
-            <TableBody items={data} >
+            <TableBody className="bg-gray-900" items={data} >
                 {(item) => (
-                    <TableRow key={item.id} className={` ${isDark ? '' : ''}`}>
+                    <TableRow key={item.id} className={` ${isDark ? 'border-b-1 border-teal-900' : ''}`}>
                         {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
                     </TableRow>
                 )}
             </TableBody>
         </Table>
+        </div>
     );
 }
