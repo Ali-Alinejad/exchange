@@ -36,7 +36,7 @@ const NewsScroll = () => {
   ];
 
   return (
-    <div className="absolute bottom-0 left-0 w-full bg-gradient-to-b from-teal-600 to-teal-700 text-white py-2 overflow-hidden z-50">
+    <div className="absolute max-sm:opacity-0 bottom-0 left-0 w-full bg-gradient-to-b from-teal-600 to-teal-700 text-white py-2 overflow-hidden z-50">
       <motion.div
         className="flex whitespace-nowrap"
         animate={{ x: ["10%", "-100%"] }}

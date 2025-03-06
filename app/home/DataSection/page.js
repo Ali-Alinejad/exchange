@@ -276,7 +276,7 @@ export default function DataSection() {
     return (
         <Table
             aria-label="Your Table Description Here"
-            className={`w-fit mx-auto my-28`}
+            className={` mx-auto -mt-8 max-mdu:-mt-12 z-20   w-[65%]`}
         >
             <TableHeader columns={columns}>
                 {(column) => (

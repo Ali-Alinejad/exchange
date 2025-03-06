@@ -34,7 +34,7 @@ export default function Navbar() {
         setTheme(theme === 'dark' ? 'light' : 'dark');
     };
 
-    const stylesButton = `${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} bg-transparent shadow-none hover:text-teal-600 hover:-translate-y-1 transition-all duration-700`;
+    const stylesButton = `${theme === 'dark' ? 'text-teal-200' : 'text-teal-600'} bg-transparent shadow-none hover:text-teal-600 hover:-translate-y-1 transition-all duration-700`;
     
     return (
         <header className={`fixed top-0 left-0 w-full flex items-center Dropdown shadow-lg justify-around px-4 z-50 transition-all duration-700 ${scrollingUp ? 'h-20' : 'h-0'} ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
