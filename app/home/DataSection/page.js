@@ -131,7 +131,7 @@ export default function DataSection() {
             x: 0,
             filter: "blur(0px)",
             transition: {
-                delay: i * 0.2,
+                delay: i * 0.4,
                 duration: 0.8,
                 ease: "easeOut"
             }
@@ -154,14 +154,14 @@ export default function DataSection() {
     };
 
     const tableVariants = {
-        hidden: { opacity: 0, scale: 0.95, x: 50 },
+        hidden: { opacity: 0, scale: 0.95, x: 0 },
         visible: { 
             opacity: 1, 
             scale: 1, 
             x: 0,
             transition: { 
                 delay: 0.8, 
-                duration: 0.6,
+                duration: 0.4,
                 ease: "circOut"
             } 
         }
@@ -212,9 +212,7 @@ export default function DataSection() {
                 </motion.p>
             </motion.div>
 
-            {/* بخش سمت راست شامل گوشی و جدول */}
             <div className="relative w-[50%] flex justify-center">
-                {/* قاب گوشی با افکت سه بعدی */}
                 <motion.div 
                     className="z-10 relative"
                     variants={phoneVariants}
@@ -224,13 +222,13 @@ export default function DataSection() {
                     <Image 
                         src="./Svgs/phoneSVG.png" 
                         alt="Phone Frame" 
-                        className="w-[500px] drop-shadow-2xl"
+                        className="w-[500px] drop-shadow-2xl "
                         
                     />
                 </motion.div>
 
                 <motion.div 
-                    className="absolute top-10 right-[30.4%]"
+                    className="absolute top-10 right-[30.4%] max-lg:right-[20%] " 
                     variants={tableVariants}
                     initial="hidden"
                     animate={inView ? "visible" : "hidden"}
