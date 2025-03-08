@@ -14,7 +14,7 @@ export default function HomePage()
  {
     return (
         <>
-<Navbar  className="absolute"/>
+<Navbar  className="absolute z-[125450]"/>
 <NewsScroll/>
 <Hero/>
 <BannerCrypto />
