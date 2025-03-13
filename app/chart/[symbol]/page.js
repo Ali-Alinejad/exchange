@@ -1,20 +1,13 @@
-"use client";
+
 
 import { useParams } from 'next/navigation';
 import Navbar from "../../home/Navbar/page";
-import { useTheme } from 'next-themes';
-import { useState, useEffect } from 'react';
 
 export default function ChartPage() {
     const { symbol } = useParams();
-    const { theme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-    const [finalTheme, setFinalTheme] = useState(null);
 
-    useEffect(() => {
-        setMounted(true);
-        setFinalTheme(theme || "light");
-    }, [theme]);
+
+
 
     if (!mounted || !finalTheme || !symbol) {
         return <div className="flex items-center justify-center h-screen text-lg font-semibold">Loading...</div>;

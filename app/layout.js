@@ -24,11 +24,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <HeroUIProvider>
-            {children}
-          </HeroUIProvider>
-        </ThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+  <HeroUIProvider>
+    {children}
+  </HeroUIProvider>
+</ThemeProvider>
+
       </body>
     </html>
   );

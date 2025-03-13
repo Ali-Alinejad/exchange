@@ -11,11 +11,8 @@ import {
     Chip,
     Image,
 } from "@heroui/react";
-import { useTheme } from "next-themes";
 
 export default function DataSection() {
-    const { theme } = useTheme();
-    const isDark = theme === "dark";
 
     const [ref, inView] = useInView({
         threshold: 0.3,
@@ -103,8 +100,8 @@ export default function DataSection() {
                 );
             case "lastPrice":
                 return (
-                    <p className={`font-bold text-md ${
-                        isDark ? "text-teal-400" : "text-teal-600"
+                    <p className={`font-bold text-md 
+                       dark:text-teal-400
                     }`}>
                         {cellValue} $
                     </p>
@@ -176,8 +173,7 @@ export default function DataSection() {
     return (
         <div
             ref={ref}
-            className={`relative flex justify-between items-center min-h-screen px-40 ${
-                isDark ? "bg-gradient-to-b from-gray-800 to-gray-900" : "bg-gradient-to-br from-teal-50 to-white"
+            className={`relative flex justify-between items-center min-h-screen px-40  "bg-gradient-to-b dark:from-gray-800 dark:to-gray-900 bg-gradient-to-br from-teal-50 to-white"
             }`}
         >
             <motion.div 
@@ -190,10 +186,9 @@ export default function DataSection() {
                         key={i}
                         variants={textVariants}
                         custom={i}
-                        className={`text-4xl font-extrabold bg-gradient-to-r ${
-                            isDark 
-                            ? "from-teal-400 to-blue-400" 
-                            : "from-teal-600 to-blue-600"
+                        className={`text-4xl font-extrabold bg-gradient-to-r
+                            dark:from-teal-400 dark:to-blue-400
+                            from-teal-600 to-blue-600
                         } bg-clip-text text-transparent`}
                     >
                         {text}
@@ -201,8 +196,8 @@ export default function DataSection() {
                 ))}
                 
                 <motion.p
-                    className={`text-lg mt-6 ${
-                        isDark ? "text-gray-300" : "text-gray-600"
+                    className={`text-lg mt-6 
+                       dark:text-gray-300  text-gray-600
                     }`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: inView ? 1 : 0 }}
@@ -235,19 +230,18 @@ export default function DataSection() {
                 >
                     <Table
                         aria-label="Crypto Price Table"
-                        className={`overflow-y-hidden  rounded-3xl mx-auto w-[320px]  backdrop-blur-lg ${
-                            isDark 
-                            ? "bg-gray-800/80 border border-gray-700" 
-                            : "bg-white/90 border border-gray-200"
+                        className={`overflow-y-hidden  rounded-3xl mx-auto w-[320px]  backdrop-blur-lg 
+                            dark:bg-gray-800/80 border dark:border-gray-700" 
+                             "bg-white/90  border-gray-200"
                         }`}
                     >
-                        <TableHeader className={`${isDark ? "bg-gray-700/50" : "bg-teal-50"}`}>
+                        <TableHeader className={`dark:bg-gray-700/50 bg-teal-50`}>
                             {["Name", "Last Price", "24h Change"].map((header, i) => (
                                 <TableColumn 
                                     key={i}
-                                    className={`    ${
-                                        isDark ? "text-teal-400" : "text-teal-600"
-                                    }`}
+                                    className={`    
+                                       dark:text-teal-400 text-teal-600
+                                    `}
                                 >
                                     {header}
                                 </TableColumn>
@@ -257,18 +251,14 @@ export default function DataSection() {
                             {(item) => (
                                 <TableRow 
                                     key={item.id} 
-                                    className={`group  ${
-                                        isDark 
-                                        ? "hover:bg-gray-700/30" 
-                                        : "hover:bg-teal-50/50"
-                                    } transition-colors`}
-                                >
+                                    className={`group    dark:hover:bg-gray-700/30 
+                                         hover:bg-teal-50/50
+                                 transition-colors`} >
                                     {["name", "lastPrice", "Change24"].map((columnKey) => (
                                         <TableCell 
-                                            className={`border-b py-[2%] ${
-                                                isDark 
-                                                ? "border-gray-700" 
-                                                : "border-teal-100"
+                                            className={`border-b py-[2%] 
+                                                dark:border-gray-700 
+                                                 border-teal-100
                                             }`} 
                                             key={columnKey}
                                         >
