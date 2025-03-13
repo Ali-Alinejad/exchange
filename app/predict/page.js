@@ -20,31 +20,32 @@ export default function Predict() {
   }
 
   return (
-    <div className="grid h-screen grid-cols-12 grid-rows-6 gap-4 p-4 bg-gray-100 overflow-hidden">
+    <div className="grid h-screen grid-cols-12 grid-rows-12 gap-2  bg-gray-100 overflow-hidden">
       
       {/* سایدبار */}
-      <div className="col-span-3 row-span-6 bg-gray-800 text-white p-4 rounded-lg">
-        <Sidebar selectedCoin={selectedCoin} onSelectCoin={setSelectedCoin} />
-      </div>
-
+   
       {/* بخش قیمت‌ها */}
-      <div className="col-span-9 row-span-1 grid grid-cols-2 lg:grid-cols-4 gap-4 ">
+      <div className="col-span-12 bg-slate-600 row-span-1 grid grid-cols-1 lg:grid-cols-5 gap-8 ">
+      <PriceCard title="سال گذشته" value={fakePrices[selectedCoin].year} />
         <PriceCard title="قیمت روز" value={fakePrices[selectedCoin].price} />
         <PriceCard title="هفته گذشته" value={fakePrices[selectedCoin].week} />
         <PriceCard title="ماه گذشته" value={fakePrices[selectedCoin].month} />
         <PriceCard title="سال گذشته" value={fakePrices[selectedCoin].year} />
       </div>
 
-      <div className="col-span-5 row-span-5 bg-white p-4 rounded-lg shadow">
-        <Prediction />
-      </div>
+     
       {/* اخبار */}
-      <div className="col-span-4 row-span-5 bg-white p-4 rounded-lg shadow">
+      <div className="col-span-3 row-span-12 ">
         <NewsCard news={fakeNews[selectedCoin]} />
       </div>
-
+      <div className="col-span-6 row-span-12  ">
+        <Prediction />
+      </div>
       {/* پیش‌بینی AI */}
-     
+      <div className="col-span-3 row-span-12  bg-gray-800 text-white p-4 rounded-lg">
+        <Sidebar selectedCoin={selectedCoin} onSelectCoin={setSelectedCoin} />
+      </div>
+
       
     </div>
   );
