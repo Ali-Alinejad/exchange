@@ -1,7 +1,7 @@
 // /components/Predict/NewsCoin/NewsCard.js
 export default function NewsCard({ news }) {
     return (
-      <div className="p-8 bg-white dark:bg-gray-900 shadow-xl hover:bg-blue-100 transition duration-300">
+      <div className="p-8  rounded-b-lg bg-white dark:bg-gray-900 shadow-xl hover:bg-blue-100 transition duration-300">
         <h3 className="text-2xl font-bold">اخبار مرتبط</h3>
         <ul>
           {news.map((item, index) => (

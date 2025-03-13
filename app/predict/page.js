@@ -9,31 +9,43 @@ import { useStore } from '../zustand/store';
 
 export default function Predict() {
   const { fakePrices, fakeNews, selectedCoin, setSelectedCoin } = useStore();
-  const [isClient, setIsClient] = useState(false); // برای اطمینان از اجرای کد در سمت کلاینت
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); // هنگامی که صفحه در سمت کلاینت بارگذاری شد
+    setIsClient(true);
   }, []);
 
   if (!isClient) {
-    return null; // در هنگام رندرینگ در سرور چیزی نمایش داده نمی‌شود
+    return null;
   }
 
   return (
-    <div className="flex gap-8 p-8">
-      <Sidebar selectedCoin={selectedCoin} onSelectCoin={setSelectedCoin} />
+    <div className="grid h-screen grid-cols-12 grid-rows-6 gap-4 p-4 bg-gray-100 overflow-hidden">
+      
+      {/* سایدبار */}
+      <div className="col-span-3 row-span-6 bg-gray-800 text-white p-4 rounded-lg">
+        <Sidebar selectedCoin={selectedCoin} onSelectCoin={setSelectedCoin} />
+      </div>
 
-      <div className="w-full md:w-3/4 flex flex-col gap-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {Object.entries(fakePrices[selectedCoin]).map(([key, value], index) => (
-            <PriceCard key={index} title={key} value={value} />
-          ))}
-        </div>
+      {/* بخش قیمت‌ها */}
+      <div className="col-span-9 row-span-1 grid grid-cols-2 lg:grid-cols-4 gap-4 ">
+        <PriceCard title="قیمت روز" value={fakePrices[selectedCoin].price} />
+        <PriceCard title="هفته گذشته" value={fakePrices[selectedCoin].week} />
+        <PriceCard title="ماه گذشته" value={fakePrices[selectedCoin].month} />
+        <PriceCard title="سال گذشته" value={fakePrices[selectedCoin].year} />
+      </div>
 
-        <NewsCard news={fakeNews[selectedCoin]} />
-
+      <div className="col-span-5 row-span-5 bg-white p-4 rounded-lg shadow">
         <Prediction />
       </div>
+      {/* اخبار */}
+      <div className="col-span-4 row-span-5 bg-white p-4 rounded-lg shadow">
+        <NewsCard news={fakeNews[selectedCoin]} />
+      </div>
+
+      {/* پیش‌بینی AI */}
+     
+      
     </div>
   );
 }
