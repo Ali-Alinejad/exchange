@@ -4,7 +4,7 @@ import { create } from 'zustand';
 
 export const useStore = create((set) => ({
   fakePrices: {
-    BTC: { name: 'Bitcoin', price: '$42,000', week: '$41,500', month: '$40,800', year: '$38,200' },
+    BTC: { name: 'Bitcoin', price: 42.000, week: 41.500, month: 40.800, year: '$38,200' },
     ETH: { name: 'Ethereum', price: '$3,200', week: '$3,100', month: '$3,050', year: '$2,800' },
     USDT: { name: 'Tether', price: '$1.00', week: '$1.00', month: '$1.00', year: '$1.00' },
   },

@@ -1,21 +1,36 @@
-import { Card } from "@heroui/card";
+import { Card, CardBody, CardFooter } from "@heroui/card";
 import { Chip } from "@heroui/chip";
+import { Divider } from "@heroui/react";
 
 // /components/Predict/CardsDetailCoins/PriceCard.js
 export default function PriceCard({ title, value }) {
-
   return (
-    <Card className="py-6 text-center bg-white dark:bg-gray-800 shadow-xl hover:scale-105 transition duration-300 rounded-lg">
-      <h3 className=" font-semibold text-gray-700 dark:text-gray-300">{title}</h3>
-      <p className="text-2xl font-bold text-gray-900 dark:text-white">{value}</p>
+    <Card className="max-w-md bg-gray-100 dark:bg-gray-800 px-2 shadow-lg rounded-b-3xl rounded-t-none hover:translate-x-1 cursor-pointer transition-all duration-200">
+      {/* عنوان */}
+      <div className="text-center  font-semibold text-gray-700 dark:text-gray-200">
+        {title}
+      </div>
 
-      {/* درصد تغییر قیمت با Chip */}
-      <Chip
-        className={`mt-2 mx-auto text-black font-semibold   `}
-        color="warning"
-      >
-         65% ▲ 
-      </Chip>
+      <Divider className="border-gray-300 dark:border-gray-600 my-2" />
+
+      {/* مقدارها */}
+      <div className="flex h-10 items-center justify-around text-sm">
+        <Chip size="sm" color="success" className="text-white font-semibold">
+          ${value}
+        </Chip>
+
+        <Divider orientation="vertical" className="border-gray-400 dark:border-gray-600" />
+
+        <Chip color="warning" className="text-white font-semibold" size="sm">
+          +{(value * 1.02).toFixed(2)}
+        </Chip>
+
+        <Divider orientation="vertical" className="border-gray-400 dark:border-gray-600" />
+
+        <Chip size="sm" color="danger" className="text-white font-semibold">
+          -{(value * 0.98).toFixed(2)}
+        </Chip>
+      </div>
     </Card>
   );
 }

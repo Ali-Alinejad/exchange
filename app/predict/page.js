@@ -20,12 +20,12 @@ export default function Predict() {
   }
 
   return (
-    <div className="grid h-screen grid-cols-12 grid-rows-12 gap-2  bg-gray-100 overflow-hidden">
+    <div className="grid h-screen grid-cols-12 grid-rows-12 gap-2  bg-gray-950 overflow-hidden">
       
       {/* سایدبار */}
    
       {/* بخش قیمت‌ها */}
-      <div className="col-span-12 bg-slate-600 row-span-1 grid grid-cols-1 lg:grid-cols-5 gap-8 ">
+      <div className="col-span-12 h-20  z-10 row-span-1 grid grid-cols-1 lg:grid-cols-5 gap-4  ">
       <PriceCard title="سال گذشته" value={fakePrices[selectedCoin].year} />
         <PriceCard title="قیمت روز" value={fakePrices[selectedCoin].price} />
         <PriceCard title="هفته گذشته" value={fakePrices[selectedCoin].week} />
@@ -35,14 +35,14 @@ export default function Predict() {
 
      
       {/* اخبار */}
-      <div className="col-span-3 row-span-12 ">
+      <div className="col-span-3 row-span-12 mt-4 ">
         <NewsCard news={fakeNews[selectedCoin]} />
       </div>
-      <div className="col-span-6 row-span-12  ">
+      <div className="col-span-6 row-span-12 mt-4 ">
         <Prediction />
       </div>
       {/* پیش‌بینی AI */}
-      <div className="col-span-3 row-span-12  bg-gray-800 text-white p-4 rounded-lg">
+      <div className="col-span-3 row-span-12 mt-4  bg-gray-900 text-white p-4 rounded-lg">
         <Sidebar selectedCoin={selectedCoin} onSelectCoin={setSelectedCoin} />
       </div>
 

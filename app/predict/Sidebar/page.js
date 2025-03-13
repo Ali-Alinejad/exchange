@@ -8,7 +8,7 @@ export default function Sidebar({ selectedCoin, onSelectCoin }) {
   ];
 
   return (
-    <div className="  text-center text-white p-8  l">
+    <div className="  text-center  text-white p-8  l">
       <h2 className="text-xl font-semibold mb-4">Coins</h2>
 
       <Autocomplete
