@@ -6,8 +6,9 @@ import Hero from "./Hero/page";
 import DataSection from "./DataSection/page";
 import NewsScroll from "./News/page";
 import BannerCrypto from "./BannerCrypto/page";
-
 import Intro from "./Intro/page";
+import Footer from "./Footer/page";
+
 
 
 export default function HomePage()
@@ -20,6 +21,7 @@ export default function HomePage()
 <BannerCrypto />
 <DataSection className/>
 <Intro/>
+<Footer />
 </>
     );
 }

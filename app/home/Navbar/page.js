@@ -40,7 +40,9 @@ export default function Navbar() {
         <header className={`fixed top-0 left-0 w-full flex items-center Dropdown shadow-lg justify-around px-4 z-50 transition-all duration-700 ${scrollingUp ? 'h-20' : 'h-0'} ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
             <div className={`flex items-center transition-all duration-700  justify-center w-full`}>
                 <div className={`flex justify-center  transition-all duration-[1.2s] ${scrollingUp ? 'w-32' : 'w-0'}`}>
+                    <NextLink href="/">
                 <img src="Logos/logo-transparent.png" alt="Logo" className="block transition-all duration-700" />
+                </NextLink>
                 </div>
                 {scrollingUp && (
                     <nav className="flex gap-4">
