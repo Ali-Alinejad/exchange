@@ -27,7 +27,7 @@ function Page() {
     ];
 
     return (
-        <div className={`flex flex-col items-center space-y-8 p-8  Dark:text-white  'bg-gradient-to-b dark:from-gray-900 to-gray-900' : 'bg-gradient-to-b from-teal-50 to-white'}`}>
+        <div className={`flex flex-col items-center space-y-8 p-8  Dark:text-white  'bg-gradient-to-b dark:from-gray-900 to bg-gray-900 : 'bg-gradient-to-b from-teal-50 to-white'}`}>
              
             {plans.map((plan, index) => (
                 <PlanCard key={index} plan={plan} index={index}  />
