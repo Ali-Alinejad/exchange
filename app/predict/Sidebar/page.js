@@ -28,24 +28,23 @@ export default function Sidebar() {
     { id: "BCH", label: "Bitcoin Cash (BCH)" },
   ];
 
-  const [inputValue, setInputValue] = useState(""); // مقدار ورودی جستجو
+  const [inputValue, setInputValue] = useState(""); 
 
-  // فیلتر کردن لیست بر اساس مقدار ورودی
+
   const filteredCoins = coins.filter((coin) =>
     coin.label.toLowerCase().includes(inputValue.toLowerCase())
   );
 
-  // پیدا کردن ارز انتخاب‌شده از لیست
   const selectedCoinData = coins.find((c) => c.id === selectedCoin) || null;
 
   return (
-    <div className="text-center text-white p-8">
+    <div className="text-center text-black dark:text-white p-8">
       <h2 className="text-xl font-semibold mb-4">Coins</h2>
 
-      {/* Autocomplete برای جستجو در لیست ارزها */}
+
       <Autocomplete
-        className="max-w-xs"
-        items={filteredCoins} // لیست فیلتر شده
+        className="max-w-xs text-black rounded-xl dark:bg-gray-900 shadow-sm border-none"
+        items={filteredCoins} 
         label="Search Coins"
         variant="bordered"
         inputValue={inputValue} // مقدار ورودی
@@ -59,19 +58,18 @@ export default function Sidebar() {
         {(item) => <AutocompleteItem key={item.id}>{item.label}</AutocompleteItem>}
       </Autocomplete>
 
-      {/* نمایش ارز انتخاب‌شده */}
       {selectedCoinData && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          <Chip color="primary" className="text-white">
+        <div className="mt-4 ">
+          <Chip color="primary" className="text-white ">
             {selectedCoinData.label}
           </Chip>
         </div>
       )}
 
       {/* لیست انتخاب ارز (single selection) */}
-      <div className="w-full max-w-xs border border-gray-700 rounded-md p-2 mt-4">
+      <div className="w-full max-w-xs mx-auto  border dark:border-gray-700 bg-white dark:bg-transparent  shadow-lg rounded-2xl  mt-4">
         <Listbox
-          classNames={{ base: "max-w-xs", list: "max-h-[60vh] overflow-y-scroll" }}
+          classNames={{ base: "max-w-xs", list: "max-h-[60vh]  overflow-y-scroll gap-4 " }}
           items={coins}
           label="Select Coins"
           selectionMode="single"
@@ -83,7 +81,7 @@ export default function Sidebar() {
             }
           }}
         >
-          {(item) => <ListboxItem key={item.id}>{item.label}</ListboxItem>}
+          {(item) => <ListboxItem key={item.id} className=" py-4 shadow-inner  ">{item.label}</ListboxItem>}
         </Listbox>
       </div>
     </div>

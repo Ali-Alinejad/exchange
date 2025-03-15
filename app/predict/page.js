@@ -1,11 +1,15 @@
 "use client";
-
+import NextLink from "next/link";
 import Sidebar from './Sidebar/page';
 import PriceCard from './CardDetailCoins/page';
 import NewsCard from './NewsCoin/page';
 import Prediction from './Ai/page';
 import { useEffect, useState } from 'react';
 import { useStore } from '../zustand/store';
+import ThemeSwitcher from '../ThemeSwitcher/page';
+import { Chip } from "@heroui/react";
+import { LucideCircleArrowOutUpLeft } from "lucide-react";
+import { LuForward } from "react-icons/lu";
 
 export default function Predict() {
   const { fakePrices, fakeNews, selectedCoin, setSelectedCoin } = useStore();
@@ -20,7 +24,7 @@ export default function Predict() {
   }
 
   return (
-    <div className="grid h-screen grid-cols-12 grid-rows-12 gap-2  bg-gray-950 overflow-hidden">
+    <div className="grid h-screen grid-cols-12 grid-rows-12 gap-2  dark:bg-gray-950 overflow-hidden">
       
       {/* سایدبار */}
    
@@ -41,9 +45,19 @@ export default function Predict() {
       <div className="col-span-6 row-span-12 mt-4 ">
         <Prediction />
       </div>
-      {/* پیش‌بینی AI */}
-      <div className="col-span-3 row-span-12 mt-4  bg-gray-900 text-white p-4 rounded-lg">
+      <div className="col-span-3 row-span-12 mt-4  bg-gray-100 dark:bg-gray-900 text-white p-4 rounded-lg">
+
+
         <Sidebar selectedCoin={selectedCoin} onSelectCoin={setSelectedCoin} />
+
+<div className="flex w-full justify-center gap-4">
+        <ThemeSwitcher/>
+        <NextLink href="/" >
+        <Chip variant="dot">
+        <LuForward  className="text-black scale-[1.7]  dark:text-white" />
+        </Chip>
+        </NextLink>
+        </div>
       </div>
 
       

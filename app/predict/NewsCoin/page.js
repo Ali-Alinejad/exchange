@@ -4,7 +4,6 @@ import { Card, CardBody, CardHeader, Chip, Select, SelectItem } from "@heroui/re
 export default function NewsCard({ news }) {
   const [sortType, setSortType] = useState("date"); 
 
-  // تابع مرتب‌سازی اخبار
   const sortedNews = [...news].sort((a, b) => {
     if (sortType === "impact") {
       return b.impact - a.impact; 
@@ -15,15 +14,14 @@ export default function NewsCard({ news }) {
   });
 
   return (
-    <div className="bg-blue-100 h-full dark:bg-gray-900 p-8 rounded-lg shadow-xl overflow-y-scroll">
+    <div className="bg-gray-50 h-full dark:bg-gray-900 p-8 rounded-lg shadow-sm overflow-y-scroll">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-2xl font-bold">NEWS</h3>
         
-        {/* دراپ‌داون برای انتخاب فیلتر */}
         <Select
           label="Sort By"
           variant="bordered"
-          className="w-40"
+          className="w-40  dark:border-gray-700"
           selectedKeys={[sortType]}
           onSelectionChange={(keys) => setSortType(keys.currentKey)}
         >
@@ -34,7 +32,7 @@ export default function NewsCard({ news }) {
 
       <div className="space-y-4">
         {sortedNews.map((item, index) => (
-          <Card key={index} className="hover:scale-105 bg-gray-800/80 shadow-2xl transition-all duration-300">
+          <Card key={index} className="hover:scale-105 dark:bg-gray-800/80 shadow-lg transition-all duration-300 ">
             <CardHeader className="flex justify-between">
               <p className="text-lg font-bold">{item.title}</p>
               <p className="text-gray-500 mt-2 text-sm">{item.date}</p>
