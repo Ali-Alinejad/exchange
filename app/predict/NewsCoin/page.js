@@ -6,7 +6,7 @@ export default function NewsCard({ news }) {
       <h3 className="text-2xl font-bold mb-4">NEWS</h3>
       <div className="space-y-4">
         {news.map((item, index) => (
-          <Card key={index} className=" hover:scale-105 bg-gray-800/30 shadow-2xl transition-all duration-300">
+          <Card key={index} className=" hover:scale-105 bg-gray-800/80 shadow-2xl transition-all duration-300">
             <CardHeader className="flex justify-around ">
               <p className="text-lg font-bold">{item.title}</p>
                 <p className="text-gray-500 mt-2 text-sm w-28 ml-auto">{item.date}</p>
