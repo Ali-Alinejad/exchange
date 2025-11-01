@@ -89,12 +89,12 @@ Mojex is a high-performance application built on a modern, robust, and scalable 
 
 1.  Clone the repository:
     ```bash
-    git clone [Your Repository URL]
-    cd my-exchange
+    git clone https://github.com/Ali-Alinejad/exchange.git
+    cd exchange
     ```
 2.  Install dependencies:
     ```bash
-    npm install
+    pnpm install
     # or
     yarn install
     ```
@@ -105,6 +105,6 @@ Mojex is a high-performance application built on a modern, robust, and scalable 
 To start the development server with the fastest performance:
 
 ```bash
-npm run dev
+pnpm dev 
 # The project will start on http://localhost:3000
 ```
