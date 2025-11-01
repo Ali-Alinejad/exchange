@@ -39,7 +39,7 @@ A dedicated layout that optimizes data flow and interaction for mobile users, en
 ### Charting & Analysis
 
 Integrated TradingView-style charts offering multiple indicators, timeframes, and drawing tools for professional market analysis.
-
+<img width="1897" height="958" alt="Image" src="https://github.com/user-attachments/assets/9dcc48cd-2efb-4fac-a0d4-c289c06b1c50" />
 <img width="1897" height="958" alt="Mojex Advanced Charting Interface" src="https://github.com/user-attachments/assets/ffb8250a-7bb7-48ec-9e10-08afef6976ee" />
 
 ---
